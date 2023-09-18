@@ -1,0 +1,27 @@
+{% load static %}
+{% load bootstrap_icons %}
+
+<div class="container-lista">
+    <div class="lista">
+        <h2>Sistemas cadastrados</h2>
+        <table id="datatable">
+            <tr>
+	            <th>ID</th>
+                <th>Sistema</th>
+                <th>&nbsp;</th>
+            </tr>
+            {% for sistema in sistemas %}
+            <tr>
+	            <td>{{sistema.id}}</td>
+                <td>{{sistema.nome}}</td>
+                <td><a href="{% url 'deleta_sistema' sistema.id %}">{% bs_icon 'trash' %}</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+        <div class="adicionar">
+            <a href="{% url 'inclui_sistema' %}">Adicionar novo sistema</a>
+        </div>
+    </div>
+
+
+</div>
