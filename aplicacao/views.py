@@ -1,12 +1,13 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from aplicacao.forms import QueryForm, SistemaForm
+from django.urls import reverse
 
 from aplicacao.models import Query, Sistema
 
 # Create your views here.
 def app_view(request):
-    return render(request, 'pages/sistemas.html', context={'name':'Igor'})
+    return render(request, 'pages/sistemas.html')
 
 def lista_queries(request):
     query = Query.objects.all
@@ -20,15 +21,17 @@ def inclui_query(request):
         form.save()
 
     context = {'form': form}
-    return render(request, 'pages/inclui_query.html', context)
+    if request.POST:
+        return HttpResponseRedirect('lista_queries')
+    else:
+        return render(request, 'pages/inclui_query.html',context)
 
 def deleta_query(request, id):
-    context ={}
 
     obj = get_object_or_404(Query, id=id)
     obj.delete()
 
-    return render(request, "pages/queries.html", context)
+    return HttpResponseRedirect('/aplicacao/lista_queries')
 
 def inclui_sistema(request):
     context = {}
@@ -37,15 +40,19 @@ def inclui_sistema(request):
         form.save()
 
     context = {'form': form}
-    return render(request, 'pages/inclui_sistema.html', context)
+
+    if request.POST:
+        return HttpResponseRedirect('lista_sistemas')
+    else:
+        return render(request, 'pages/inclui_sistema.html',context)
+
 
 def deleta_sistema(request, id):
-    context ={}
 
     obj = get_object_or_404(Sistema, id=id)
     obj.delete()
 
-    return render(request, "pages/sistemas.html", context)
+    return HttpResponseRedirect('/')
 
 def lista_sistemas(request):
     sistemas = Sistema.objects.all

@@ -79,10 +79,9 @@ button {
 .adicionar{
     background: rgb(58, 121, 193);
     color: white;
-    border-radius: 10px;
+    border-radius: 5px;
     margin-top: 1rem;
-    display: grid;
-    width: 10%;
+    width: 150px;
     margin: auto;
 }
 
