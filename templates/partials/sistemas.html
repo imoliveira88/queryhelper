@@ -14,7 +14,7 @@
             <tr>
 	            <td>{{sistema.id}}</td>
                 <td>{{sistema.nome}}</td>
-                <td><a href="{% url 'deleta_sistema' sistema.id %}">{% bs_icon 'trash' %}</a></td>
+                <td><a href="{% url 'deleta_sistema' sistema.id %}">{% bs_icon 'trash'  color='blue' %}</a></td>
             </tr>
             {% endfor %}
         </table>

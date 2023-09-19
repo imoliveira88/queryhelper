@@ -6,7 +6,7 @@
         <h2>Adicionar query</h2>
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            {{ form.as_p }}
+            {{ form.as_div }}
             <input type="submit" value="Adicionar">
         </form>
     </div>

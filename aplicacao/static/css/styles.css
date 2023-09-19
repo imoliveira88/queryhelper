@@ -23,7 +23,7 @@ body {
 table.menu {
     background: #061aef;
     box-shadow: 5px 5px 5px #9295e0;
-    width: 80%;
+    width: 60%;
     font-size: 2rem;
     color: white;
     text-decoration: none;
@@ -115,48 +115,6 @@ button {
     margin: 2rem;
 }
 
-.search-form {
-    border: .2rem solid gray;
-    max-width: 64rem;
-    margin: 0 auto;
-    border-radius: .4rem;
-    position: relative;
-    transition: all 300ms ease-in-out;
-}
-
-.search-input .search-button {
-    border: none;
-    background: none;
-    outline: none;
-    padding: 1rem;
-}
-
-.search-input {
-    width: 100%;
-    padding-right: 3rem;
-}
-
-.search-button {
-    position: absolute;
-    top: 0;
-    right: 0;
-    transition: all 300ms ease-in-out;
-}
-
-.search-button:focus {
-    outline: 1px solid yellow;
-    background: rgba(0, 0, 0, 0.2);
-}
-
-.search-form:focus-within {
-    border-color: green;
-    background: white;
-}
-
-.search-form:focus-within .search-button {
-    border-color: green;
-}
-
 .main-content {
     background: white;
     padding-top: 2rem;
@@ -177,6 +135,22 @@ button {
     flex-shrink: 1;
     flex-grow: 1;
     text-align: center;
+}
+
+#table-query {
+    width: 30%;
+    margin: auto;
+    border: 1px;
+    border-color: blue;
+    border-radius: 5px;
+}
+
+#exibe-query {
+    width: 50%;
+    margin: auto;
+    border: 1px;
+    border-color: blue;
+    border-radius: 5px;
 }
 
 #datatable {
