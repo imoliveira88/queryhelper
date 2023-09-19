@@ -27,7 +27,7 @@ class Query(models.Model):
                              null=False)
     query = models.CharField('Query',
                             unique=True,
-                            max_length=2000,
+                            max_length=5000,
                             blank=False)
 
     def __str__(self):

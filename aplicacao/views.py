@@ -14,6 +14,11 @@ def lista_queries(request):
     context = {'queries': query}
     return render(request, "pages/queries.html", context)
 
+def exibe_query(request, id):
+    query = Query.objects.get(id=id)
+    context = {'query': query}
+    return render(request, "pages/exibe_query.html", context)
+
 def inclui_query(request):
     context = {}
     form = QueryForm(request.POST or None)
