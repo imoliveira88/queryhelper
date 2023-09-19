@@ -2,6 +2,7 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from aplicacao.forms import QueryForm, SistemaForm
 from django.urls import reverse
+from django.contrib import messages
 
 from aplicacao.models import Query, Sistema
 
@@ -28,8 +29,12 @@ def inclui_query(request):
 
 def deleta_query(request, id):
 
-    obj = get_object_or_404(Query, id=id)
-    obj.delete()
+    try:
+        obj = get_object_or_404(Query, id=id)
+        obj.delete()
+        messages.info(request, "Query excluída com sucesso!")
+    except Exception:
+        messages.error(request, "Erro na tentativa de exclusão da query!")
 
     return HttpResponseRedirect('/aplicacao/lista_queries')
 
@@ -49,8 +54,12 @@ def inclui_sistema(request):
 
 def deleta_sistema(request, id):
 
-    obj = get_object_or_404(Sistema, id=id)
-    obj.delete()
+    try:
+        obj = get_object_or_404(Sistema, id=id)
+        obj.delete()
+        messages.info(request, "Sistema excluído com sucesso!")
+    except Exception:
+        messages.error(request, "Não foi possível excluir o sistema por haver queries cadastradas nele!")
 
     return HttpResponseRedirect('/')
 
