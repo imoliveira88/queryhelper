@@ -3,24 +3,24 @@
 
 <div class="container-lista">
     <div class="lista">
-        <h2>Sistemas cadastrados</h2>
+        <h2>Módulos cadastrados</h2>
         <table id="datatable">
             <tr>
 	            <th>ID</th>
-                <th>Sistema</th>
+                <th>Modulo</th>
                 <th>&nbsp;</th>
             </tr>
-            {% for sistema in sistemas %}
+            {% for modulo in modulos %}
             <tr>
-	            <td>{{sistema.id}}</td>
-                <td>{{sistema.nome}}</td>
-                <td><a href="{% url 'deleta_sistema' sistema.id %}">{% bs_icon 'trash'  color='red' %}</a></td>
+	            <td>{{modulo.id}}</td>
+                <td>{{modulo.nome}}</td>
+                <td><a href="{% url 'deleta_modulo' modulo.id %}">{% bs_icon 'trash'  color='red' %}</a></td>
             </tr>
             {% endfor %}
         </table>
         <br>
         <div class="adicionar">
-            <a href="{% url 'inclui_sistema' %}">Adicionar novo sistema</a>
+            <a href="{% url 'inclui_modulo' %}">Adicionar novo módulo</a>
         </div>
     </div>
 

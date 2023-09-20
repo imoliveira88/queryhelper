@@ -1,10 +1,11 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
-from aplicacao.forms import QueryForm, SistemaForm
+from aplicacao.forms import QueryForm, SistemaForm, ModuloForm
 from django.urls import reverse
 from django.contrib import messages
+from aplicacao.filters import QueryFilter
 
-from aplicacao.models import Query, Sistema
+from aplicacao.models import Query, Sistema, Modulo
 
 # Create your views here.
 def app_view(request):
@@ -14,6 +15,40 @@ def lista_queries(request):
     query = Query.objects.all
     context = {'queries': query}
     return render(request, "pages/queries.html", context)
+
+def lista_modulos(request):
+    modulos = Modulo.objects.all
+    context = {'modulos': modulos}
+    return render(request, "pages/modulos.html", context)
+
+def deleta_modulo(request, id):
+
+    try:
+        obj = get_object_or_404(Modulo, id=id)
+        obj.delete()
+        messages.info(request, "Módulo excluído com sucesso!")
+    except Exception:
+        messages.error(request, "Erro na tentativa de exclusão do módulo!")
+
+    return HttpResponseRedirect('/aplicacao/lista_modulos')
+
+def inclui_modulo(request):
+    context = {}
+    form = ModuloForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+
+    context = {'form': form}
+    if request.POST:
+        return HttpResponseRedirect('lista_modulos')
+    else:
+        return render(request, 'pages/inclui_modulo.html',context)
+
+def queries_por_sistema(request):
+    filtro = QueryFilter(request.GET, queryset=Query.objects.all())
+
+    context = {'filtro': filtro}
+    return render(request, "pages/relatorios.html", context)
 
 def exibe_query(request, id):
     query = Query.objects.get(id=id)
