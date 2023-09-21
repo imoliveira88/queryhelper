@@ -1,5 +1,5 @@
 from django.urls import path
-from aplicacao.views import deleta_query, inclui_query, inclui_sistema, lista_queries, lista_sistemas, app_view, deleta_sistema, exibe_query, queries_por_sistema, inclui_modulo, deleta_modulo, lista_modulos
+from aplicacao.views import deleta_query, inclui_query, inclui_sistema, lista_queries, lista_sistemas, app_view, sobre, deleta_sistema, exibe_query, queries_por_sistema, inclui_modulo, deleta_modulo, lista_modulos
 
 urlpatterns = [
     path('aplicacao/', app_view),
@@ -15,5 +15,6 @@ urlpatterns = [
     path('aplicacao/inclui_modulo', inclui_modulo, name="inclui_modulo"),
     path('aplicacao/lista_modulos', lista_modulos, name="modulos"),
     path('aplicacao/deleta_modulo/<int:id>/', deleta_modulo, name='deleta_modulo'),
+    path('aplicacao/sobre', sobre, name='sobre'),
 ]
 

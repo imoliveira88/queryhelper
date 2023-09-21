@@ -7,10 +7,21 @@
 
         <br>
         <form method="get">
-            {{ filtro.form.as_p }}
+            <table class="table-filtro" align="center">
+                <tr>
+                    <th>Descrição contém</th>
+                    <th>Sistema</th>
+                    <th>Módulo</th>
+                </tr>
+                <tr>
+                    <td>{{filtro.form.filtro_descricao}}</td>
+                    <td>{{filtro.form.filtro_sistema}}</td>
+                    <td>{{filtro.form.filtro_modulo}}</td>
+                </tr>
+            </table>
             <button class="btn-primary" type="submit">Pesquisar</button>
         </form>
-        
+
         </br>
 
         <table id="datatable">

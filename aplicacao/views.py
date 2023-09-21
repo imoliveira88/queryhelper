@@ -50,6 +50,9 @@ def queries_por_sistema(request):
     context = {'filtro': filtro}
     return render(request, "pages/relatorios.html", context)
 
+def sobre(request):
+    return render(request, "pages/sobre.html")
+
 def exibe_query(request, id):
     query = Query.objects.get(id=id)
     context = {'query': query}

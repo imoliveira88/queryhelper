@@ -128,6 +128,30 @@ button {
     background: white;
 }
 
+table.table-filtro{
+    padding: 2rem;
+    margin: auto;
+    border: 10px;
+    border-color: blue;
+    border-radius: 5px;
+}
+
+.sobre{
+    width: 40%;
+    padding: 2rem;
+    margin: auto;
+    border: 1px;
+    border-color: blue;
+    border-radius: 5px;
+}
+
+table.table-filtro th {
+    padding-top: 6px;
+    background-color: #061aef;
+    color: white;
+    padding: 2rem;
+  }
+
 .lista {
     display: flex;
     width: 80%;
@@ -137,7 +161,7 @@ button {
     text-align: center;
 }
 
-#table-query {
+.table-query {
     width: 30%;
     margin: auto;
     border: 1px;
@@ -145,7 +169,7 @@ button {
     border-radius: 5px;
 }
 
-#exibe-query {
+.exibe-query {
     width: 50%;
     margin: auto;
     border: 1px;
@@ -162,15 +186,10 @@ button {
 #datatable td, #datatable th {
     border: 0px;
     padding: 8px;
-    text-align: left;
+    text-align: center;
 }
 
 #datatable tr:nth-child(even){background-color: #f2f2f2;}
-
-#datatable tr:hover {
-    background-color: #6378c4;
-    cursor: pointer;
-}
 
 #datatable th {
     padding-top: 12px;
