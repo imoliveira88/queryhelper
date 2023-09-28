@@ -13,6 +13,7 @@
                 <th>Descrição</th>
                 <th>&nbsp;</th>
                 <th>&nbsp;</th>
+                <th>&nbsp;</th>
             </tr>
             {% for query in queries %}
             <tr>
@@ -22,6 +23,7 @@
                 <td>{{query.modulo.nome}}</td>
                 <td>{{query.descricao}}</td>
                 <td><a href="{% url 'exibe_query' query.id %}">{% bs_icon 'search' color='blue' %}</a></td>
+                <td><a href="{% url 'edita_query' query.id %}">{% bs_icon 'pencil' color='green' %}</a></td>
                 <td><a href="{% url 'deleta_query' query.id %}">{% bs_icon 'trash' color='red' %}</a></td>
             </tr>
             {% endfor %}
