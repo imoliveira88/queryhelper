@@ -67,24 +67,6 @@ table.menu td:hover {
     padding: 0;
 }
 
-a {
-    text-decoration: none;
-    color: white;
-}
-
-a:hover {
-    text-decoration: none;
-    color: #061aef;
-}
-
-td a {
-    text-decoration: none;
-}
-
-td a:hover {
-    text-decoration: none;
-}
-
 button {
     background: rgb(58, 121, 193);
     color: white;
@@ -150,6 +132,11 @@ table.table-filtro th {
     background-color: #061aef;
     color: white;
     padding: 2rem;
+  }
+
+  table.table-filtro td {
+    padding: 2rem;
+    word-wrap: break-word;
   }
 
 .lista {

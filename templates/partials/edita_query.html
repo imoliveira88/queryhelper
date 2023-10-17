@@ -20,18 +20,16 @@
                     <td>{{form.sistema}}</td>
                     <td>{{form.modulo}}</td>
                 </tr>
-            </table>
-            <table class="table-filtro" align="center">
                 <tr>
-                    <td>{{form.query}}</td>
+                    <td colspan="4" width="100%">{{form.query}}</td>
                 </tr>
             </table>
-            <button class="btn-primary" type="submit">Salvar</button>
+            <button class="btn btn-primary" type="submit">Salvar</button>
         </form>
 
         <br>
-        <div class="adicionar">
-            <a href="{% url 'queries' %}">Retornar</a>
+        <div>
+            <a href="{% url 'queries' %}" class="btn btn-secondary">Retornar</a>
         </div>
     </div>
 

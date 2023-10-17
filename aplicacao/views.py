@@ -22,15 +22,17 @@ def edita_query(request, id):
     if request.method == 'GET':
         context = {'form' : QueryForm(instance=query), 'id':id}
         return render(request,'pages/edita_query.html',context)
-    
+#usar strip
     elif request.method == 'POST':
         form = QueryForm(request.POST or None)
         context = {'form': form}
-        if form.is_valid():
-            form.save()
-            return render(request, 'pages/queries.html',context)
-        else:
-            return render(request, 'pages/edita_query.html',context)
+        query.nome = form["nome"].data
+        query.query = form["query"].data
+        query.descricao = form["descricao"].data
+        query.save()
+        query = Query.objects.all
+        context = {'queries': query}
+        return render(request, 'pages/queries.html',context)
 
 def lista_modulos(request):
     modulos = Modulo.objects.all
