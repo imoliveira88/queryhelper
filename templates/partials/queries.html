@@ -6,7 +6,7 @@
         <h2>Queries cadastradas</h2>
         <table id="datatable">
             <tr>
-	            <th>ID</th>
+                <th>ID</th>
                 <th>Nome</th>
                 <th>Sistema</th>
                 <th>Modulo</th>
@@ -17,17 +17,36 @@
             </tr>
             {% for query in queries %}
             <tr>
-	            <td>{{query.id}}</td>
-                <td>{{query.nome}}</td>
-                <td>{{query.sistema.nome}}</td>
-                <td>{{query.modulo.nome}}</td>
-                <td>{{query.descricao}}</td>
+                <td>{{ query.id }}</td>
+                <td>{{ query.nome }}</td>
+                <td>{{ query.sistema.nome }}</td>
+                <td>{{ query.modulo.nome }}</td>
+                <td>{{ query.descricao }}</td>
                 <td><a href="{% url 'exibe_query' query.id %}">{% bs_icon 'search' color='blue' %}</a></td>
                 <td><a href="{% url 'edita_query' query.id %}">{% bs_icon 'pencil' color='green' %}</a></td>
                 <td><a href="{% url 'deleta_query' query.id %}">{% bs_icon 'trash' color='red' %}</a></td>
             </tr>
             {% endfor %}
         </table>
+
+        <div class="pagination">
+            <span class="step-links">
+                {% if queries.has_previous %}
+                    <a href="?page=1">&laquo; Primeiro</a>
+                    <a href="?page={{ queries.previous_page_number }}">Anterior</a>
+                {% endif %}
+
+                <span class="current">
+                    Página {{ queries.number }} de {{ queries.paginator.num_pages }}.
+                </span>
+
+                {% if queries.has_next %}
+                    <a href="?page={{ queries.next_page_number }}">Próximo</a>
+                    <a href="?page={{ queries.paginator.num_pages }}">Último &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+
         <table>
             <tr><td>&nbsp;</td></tr>
         </table>
@@ -35,6 +54,4 @@
             <a href="{% url 'inclui_query' %}" class="btn btn-primary">Adicionar nova query</a>
         </div>
     </div>
-
-
 </div>

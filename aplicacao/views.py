@@ -5,6 +5,7 @@ from django.urls import reverse
 from django.contrib import messages
 from aplicacao.filters import QueryFilter
 from django.template.loader import get_template
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from aplicacao.models import Query, Sistema, Modulo
 
@@ -13,9 +14,24 @@ def app_view(request):
     return render(request, 'pages/sistemas.html')
 
 def lista_queries(request):
-    query = Query.objects.all
-    context = {'queries': query}
-    return render(request, "pages/queries.html", context)
+    query_list = Query.objects.all()
+
+    paginator = Paginator(query_list, 10)  # Show 10 queries per page
+    page = request.GET.get('page')  # Fix the parameter name
+
+    try:
+        queries = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver the first page.
+        queries = paginator.page(1)
+    except EmptyPage:
+        # If the page is out of range, deliver the last page of results.
+        queries = paginator.page(paginator.num_pages)
+
+    return render(request, 'pages/queries.html', {'queries': queries})
+
+    #context = {'queries': query}
+    #return render(request, "pages/queries.html", context)
 
 def edita_query(request, id):
     query = Query.objects.get(id=id)
