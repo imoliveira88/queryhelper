@@ -47,6 +47,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    #'django.contrib.staticfiles.middleware.StaticFilesMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -59,7 +60,6 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             BASE_DIR / 'templates',
-            #BASE_DIR / 'teste' / 'templates_temp'
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -85,14 +85,20 @@ DATABASES = {
         'NAME': 'queryhelper',
         'USER': 'postgres',
         'PASSWORD': "coper2023gas",
-        'HOST': 'localhost',
+        'HOST': '192.168.60.136',
         'PORT': '5432',
     }
 }
 
-STATIC_URL = f'{BASE_DIR}/public/static/'
-MEDIA_URL = f'{BASE_DIR}/public/uploads/'
-MEDIA_ROOT = f'{BASE_DIR}/public/uploads'
+STATIC_URL = '/static/'
+STATIC_ROOT = '/static/'
+#STATIC_ROOT = f'{BASE_DIR}/aplicacao/static/'
+#STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    f'{BASE_DIR}/aplicacao/static',  # Add your custom static directory path
+    # Add more directories if needed
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -124,11 +130,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.2/howto/static-files/
-
-STATIC_URL = '/static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
