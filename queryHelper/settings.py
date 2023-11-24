@@ -91,14 +91,9 @@ DATABASES = {
 }
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/static/'
+STATIC_ROOT = '/app/aplicacao/static/'
 #STATIC_ROOT = f'{BASE_DIR}/aplicacao/static/'
 #STATIC_URL = '/static/'
-
-STATICFILES_DIRS = [
-    f'{BASE_DIR}/aplicacao/static',  # Add your custom static directory path
-    # Add more directories if needed
-]
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
