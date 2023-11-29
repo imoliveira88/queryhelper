@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="main-content">
+    <table class="messages">
+        <tr>
+            <td>
+            {% if messages %}
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            {% endif %}
+            </td>
+        </tr>
+    </table>
+    {% include 'partials/sistemas.html' %}
+</div>
+{% endblock content %}

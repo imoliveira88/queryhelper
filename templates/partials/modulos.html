@@ -1,0 +1,30 @@
+{% load static %}
+{% load bootstrap_icons %}
+
+<div class="container-lista">
+    <div class="lista">
+        <h2>Módulos cadastrados</h2>
+        <table id="datatable">
+            <tr>
+	            <th>ID</th>
+                <th>Modulo</th>
+                <th>&nbsp;</th>
+            </tr>
+            {% for modulo in modulos %}
+            <tr>
+	            <td>{{modulo.id}}</td>
+                <td>{{modulo.nome}}</td>
+                <td><a href="{% url 'deleta_modulo' modulo.id %}">{% bs_icon 'trash'  color='red' %}</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+        <table>
+            <tr><td>&nbsp;</td></tr>
+        </table>
+        <div>
+            <a href="{% url 'inclui_modulo' %}" class="btn btn-primary">Adicionar novo módulo</a>
+        </div>
+    </div>
+
+
+</div>

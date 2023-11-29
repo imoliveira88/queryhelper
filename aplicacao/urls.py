@@ -1,24 +1,21 @@
-"""
-URL configuration for queryHelper project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
-from django.contrib import admin
 from django.urls import path
-from aplicacao.views import home_view, piramide_view
+from aplicacao.views import deleta_query, edita_query, inclui_query, inclui_sistema, lista_queries, lista_sistemas, app_view, sobre, deleta_sistema, exibe_query, queries_por_sistema, inclui_modulo, deleta_modulo, lista_modulos
 
 urlpatterns = [
-    path('piramide/', piramide_view),
-    path('', home_view)
+    path('aplicacao/', app_view),
+    path('', lista_sistemas),
+    path('aplicacao/lista_sistemas', lista_sistemas, name="sistemas"),
+    path('aplicacao/inclui_sistema', inclui_sistema, name="inclui_sistema"),
+    path('aplicacao/deleta_sistema/<int:id>/', deleta_sistema, name='deleta_sistema'),
+    path('aplicacao/inclui_query', inclui_query, name="inclui_query"),
+    path('aplicacao/lista_queries', lista_queries, name="queries"),
+    path('aplicacao/edita_query/<int:id>/', edita_query, name="edita_query"),
+    path('aplicacao/deleta_query/<int:id>/', deleta_query, name='deleta_query'),
+    path('aplicacao/relatorios', queries_por_sistema, name="relatorios"),
+    path('aplicacao/exibe_query/<int:id>/', exibe_query, name='exibe_query'),
+    path('aplicacao/inclui_modulo', inclui_modulo, name="inclui_modulo"),
+    path('aplicacao/lista_modulos', lista_modulos, name="modulos"),
+    path('aplicacao/deleta_modulo/<int:id>/', deleta_modulo, name='deleta_modulo'),
+    path('aplicacao/sobre', sobre, name='sobre'),
 ]
+
