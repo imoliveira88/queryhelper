@@ -12,7 +12,7 @@
                 <th>Modulo</th>
                 <th>Descrição</th>
                 <th>&nbsp;</th>
-                <th>&nbsp;</th>
+                <th><a href="{% url 'inclui_query' %}">{% bs_icon 'plus-lg' color='white' %}</a></th>
                 <th>&nbsp;</th>
             </tr>
             {% for query in queries %}
@@ -50,8 +50,5 @@
         <table>
             <tr><td>&nbsp;</td></tr>
         </table>
-        <div>
-            <a href="{% url 'inclui_query' %}" class="btn btn-primary">Adicionar nova query</a>
-        </div>
     </div>
 </div>

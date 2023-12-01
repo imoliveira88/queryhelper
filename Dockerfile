@@ -29,8 +29,6 @@ COPY . /app/
 # Make the entrypoint.sh script executable
 RUN chmod +x /app/entrypoint.sh
 
-RUN find . -name "settings.py"
-
 # Set environment variables
 ENV DJANGO_SETTINGS_MODULE=queryHelper.settings
 
@@ -38,8 +36,6 @@ RUN python3 manage.py makemigrations
 RUN python3 manage.py migrate
 #python3 manage.py clearsessions
 RUN python3 manage.py collectstatic --noinput
-
-RUN chmod -R 777 /app/aplicacao/static
 
 # Expose Gunicorn port
 EXPOSE 8000
