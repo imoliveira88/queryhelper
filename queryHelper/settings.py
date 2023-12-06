@@ -26,9 +26,21 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'aplicacao',
+    'dashboard',
+    'channels',
+    'channels_redis',
     'django_bootstrap_icons',
     'django_filters'
 ]
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("127.0.0.1", 6379)],
+        },
+    },
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -61,7 +73,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'queryHelper.wsgi.application'
+ASGI_APPLICATION = 'queryHelper.asgi.application'
 
 
 # Database
@@ -73,7 +85,7 @@ DATABASES = {
         'NAME': 'queryhelper',
         'USER': 'postgres',
         'PASSWORD': "coper2023gas",
-        'HOST': '192.168.60.136',
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 }

@@ -1,0 +1,34 @@
+{% load static %}
+{% load bootstrap_icons %}
+
+<div class="container-lista">
+    <h1>Query Helper Dashboard</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+            </tr>
+        </thead>
+        <tbody id="dashboard-table">
+            <!-- Data will be inserted here dynamically -->
+        </tbody>
+    </table>
+
+    <script>
+        const socket = new WebSocket('ws://' + window.location.host + '/ws/dashboard/');
+
+        socket.onmessage = function (event) {
+            const data = JSON.parse(event.data);
+            console.log('Received data:', data);
+            // Update the dashboard table with the received data
+            const tableBody = document.getElementById('dashboard-table');
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `<td>${data.nome}</td>`;
+            tableBody.appendChild(newRow);
+        };
+
+        socket.onclose = function (event) {
+            console.error('WebSocket closed:', event);
+        };
+    </script>
+</div>

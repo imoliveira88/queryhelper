@@ -22,6 +22,7 @@ RUN pip3 install psycopg2-binary
 RUN pip3 install --upgrade setuptools
 RUN pip3 install --upgrade tzdata
 RUN pip3 install whitenoise
+RUN pip3 install channels channels_redis
 
 # Copy the application code
 COPY . /app/
