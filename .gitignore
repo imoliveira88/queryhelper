@@ -1,2 +1,3 @@
 nginx.conf
 __pycache__
+*.pyc

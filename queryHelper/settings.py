@@ -87,12 +87,20 @@ DATABASES = {
         'PASSWORD': "coper2023gas",
         'HOST': '192.168.60.136',
         'PORT': '5432',
+    },
+    'piramide': {
+        'ENGINE': 'django.db.backends.oracle',
+        'NAME': 'piramide.intranet.copergas.com.br',
+        'USER': 'SINC_INADIPLENTES',
+        'PASSWORD': 'AN4LISYS_IN4D1',
+        'HOST': '192.168.1.46',
+        'PORT': '1521',
     }
 }
 
 STATIC_URL = '/static/'
 #STATIC_ROOT = f'{BASE_DIR}/aplicacao/static/'
-STATIC_ROOT = '/queryhelper/aplicacao/static/'
+STATIC_ROOT = '/app/aplicacao/static/'
 #STATIC_ROOT = /aplicacao/static/'
 #STATIC_URL = '/static/'
 

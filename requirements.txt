@@ -6,6 +6,7 @@ channels-redis==4.1.0
 charset-normalizer==3.3.2
 click==8.1.7
 colorama==0.4.6
+cx-Oracle==8.3.0
 dash==2.9.3
 dash-bootstrap-components==1.5.0
 dash-core-components==2.0.0
@@ -14,7 +15,6 @@ dash-table==5.0.0
 defusedxml==0.7.1
 Django==4.2.7
 django-bootstrap-icons==0.8.6
-django-channels==0.7.0
 django-filter==23.4
 django-plotly-dash==2.2.2
 dpd-components==0.1.0

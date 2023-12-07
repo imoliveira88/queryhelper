@@ -145,3 +145,30 @@ def lista_sistemas(request):
 
     context = {'sistemas': sistemas}
     return render(request, "pages/sistemas.html", context)
+
+def query_oracle_database(request):
+    # Connect to the Oracle database
+    connection = cx_Oracle.connect(
+        user="SINC_INADIPLENTES",
+        password="AN4LISYS_IN4D1",
+        dsn="192.168.1.46:1521/piramide.intranet.copergas.com.br"
+    )
+
+    # Create a cursor
+    cursor = connection.cursor()
+
+    # Execute a sample query (replace with your actual query)
+    query = "SELECT 1, 2 FROM ITENS_PED_COMPRA FETCH FIRST 10 ROWS ONLY"
+    cursor.execute(query)
+
+    # Fetch all rows
+    rows = cursor.fetchall()
+
+    # Close the cursor and connection
+    cursor.close()
+    connection.close()
+
+    # Process the data or pass it to a template
+    data = [{'column1': row[0], 'column2': row[1]} for row in rows]
+
+    return render(request, 'pages/teste.html', {'data': data})
