@@ -85,14 +85,14 @@ DATABASES = {
         'NAME': 'queryhelper',
         'USER': 'postgres',
         'PASSWORD': "coper2023gas",
-        'HOST': 'localhost',
+        'HOST': '192.168.60.136',
         'PORT': '5432',
     }
 }
 
 STATIC_URL = '/static/'
 #STATIC_ROOT = f'{BASE_DIR}/aplicacao/static/'
-STATIC_ROOT = '/app/aplicacao/static/'
+STATIC_ROOT = '/queryhelper/aplicacao/static/'
 #STATIC_ROOT = /aplicacao/static/'
 #STATIC_URL = '/static/'
 

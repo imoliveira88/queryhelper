@@ -2,33 +2,35 @@
 FROM ubuntu:latest
 
 # Set the working directory in the container
-WORKDIR /app
+WORKDIR /queryhelper
 
 # Update and install necessary packages
 RUN apt-get update -y && \
     apt-get install -y python3 python3-pip && \
-    apt-get install -y libpq-dev
+    apt-get install -y libpq-dev && \
+    apt-get install -y redis-server
 
 # Install Gunicorn
 RUN pip3 install gunicorn
 
 # Install dependencies
-RUN pip3 install psycopg2
-RUN pip3 install django-filter
-RUN pip3 install django-bootstrap-icons
+#RUN pip3 install psycopg2
+#RUN pip3 install django-filter
+#RUN pip3 install django-bootstrap-icons
 #RUN pip3 install django-admin
-RUN pip3 install Django
+#RUN pip3 install Django
 RUN pip3 install psycopg2-binary
-RUN pip3 install --upgrade setuptools
-RUN pip3 install --upgrade tzdata
-RUN pip3 install whitenoise
-RUN pip3 install channels channels_redis
+#RUN pip3 install --upgrade setuptools
+#RUN pip3 install --upgrade tzdata
+#RUN pip3 install whitenoise
+#RUN pip3 install channels channels_redis
+RUN pip3 install -r /queryhelper/requirements.txt
 
 # Copy the application code
-COPY . /app/
+COPY . .
 
 # Make the entrypoint.sh script executable
-RUN chmod +x /app/entrypoint.sh
+RUN chmod +x /queryhelper/entrypoint.sh
 
 # Set environment variables
 ENV DJANGO_SETTINGS_MODULE=queryHelper.settings
@@ -42,4 +44,4 @@ RUN python3 manage.py collectstatic --noinput
 EXPOSE 8000
 
 # Start the application using entrypoint.sh
-CMD ["/app/entrypoint.sh"]
+CMD ["/queryhelper/entrypoint.sh"]
